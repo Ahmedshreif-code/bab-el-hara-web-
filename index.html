@@ -389,61 +389,6 @@
             </div>
       </div><!----------- <container> --------------->
     </footer>
-    <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const links = document.querySelectorAll(".header-list a");
-        
-                // تحديد رابط الصفحة الرئيسية
-                const homeLink = document.querySelector(".header-list a.home-link");
-        
-                // استرجاع الصفحة النشطة من Local Storage
-                let activePage = localStorage.getItem("activePage");
-        
-                // إذا لم يكن هناك صفحة محفوظة (أول مرة تحميل)، حدد الصفحة الرئيسية
-                if (!activePage) {
-                    activePage = homeLink.href;
-                    localStorage.setItem("activePage", activePage);
-                    homeLink.classList.add("active");
-                    showBorders(homeLink); // تفعيل التأثير الخاص بالـ Hover على Home
-                }
-        
-                links.forEach(link => {
-                    // مقارنة الرابط الحالي مع الرابط المخزن وتعيين الكلاس 'active'
-                    if (link.href === activePage) {
-                        link.classList.add("active");
-                        showBorders(link);
-                    }
-        
-                    link.addEventListener("click", function() {
-                        // إزالة الكلاس 'active' من جميع الروابط
-                        links.forEach(l => {
-                            l.classList.remove("active");
-                            hideBorders(l);
-                        });
-        
-                        // إضافة الكلاس 'active' للعنصر المحدد
-                        this.classList.add("active");
-                        showBorders(this);
-        
-                        // تخزين الرابط في Local Storage
-                        localStorage.setItem("activePage", this.href);
-                    });
-                });
-        
-                function showBorders(link) {
-                    let spans = link.querySelectorAll("span");
-                    spans.forEach(span => {
-                        span.style.transform = "scaleX(1)";
-                    });
-                }
-        
-                function hideBorders(link) {
-                    let spans = link.querySelectorAll("span");
-                    spans.forEach(span => {
-                        span.style.transform = "scaleX(0)";
-                    });
-                }
-            });
-        </script>
+
   </body>
 </html>
